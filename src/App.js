@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+
+import "./App.css";
+import ModalMouse from "./components/Modal";
+import AreaMouse from "./components/AreaMouse";
 
 function App() {
+  const [modalMouse, setModalMouse] = useState(false);
+  const [modalGps, setModalGps] = useState(false);
+
+  const openModalMouse = () => setModalMouse(true);
+  const openModalGps = () => setModalGps(true);
+
+  // const ContentAdded = () => <p>Si hay contenido</p>;
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1 className="App-header">COMPUTE AREA</h1>
+      <button className="App-button" onClick={openModalMouse}>
+        Calculate with mouse
+      </button>
+      <button className="App-button">Calculate with GPS</button>
+      {/* {modalMouse && (
+        <ModalMouse Content={AreaMouse} setModal={setModalMouse} />
+      )} */}
+      {modalMouse && <AreaMouse setModal={setModalMouse} />}
     </div>
   );
 }
