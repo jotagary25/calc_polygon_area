@@ -20,7 +20,8 @@
   background-color: slateblue;
   color: white;
 } */
-.polygon-background {
+
+/* .polygon-background {
   border: 1px solid red;
   background: black;
   opacity: 0.5;
@@ -33,7 +34,7 @@
   position: absolute;
 }
 .polygon-content {
-  /* border: 1px solid blue; */
+  border: 1px solid blue;
   position: fixed;
   background: white;
   box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.5);
@@ -53,7 +54,7 @@
 }
 
 .polygon-title {
-  /* border: 1px solid salmon; */
+  border: 1px solid salmon;
   width: 100%;
   padding: 0.5rem 1.5rem 0.5rem 1.5rem;
   display: flex;
@@ -65,7 +66,7 @@
   font-weight: 600;
 }
 .polygon-buttons {
-  /* border: 1px solid salmon; */
+  border: 1px solid salmon;
 
   display: flex;
   flex-flow: column;
@@ -73,11 +74,11 @@
   gap: 10px;
 }
 .polygon-buttons1 {
-  /* border: 1px solid white; */
+  border: 1px solid white;
   background-color: blue;
   border-radius: 5px;
   color: white;
   font-weight: 600;
   width: 10rem;
   height: 2rem;
-}
+} */
