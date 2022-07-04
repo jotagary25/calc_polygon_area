@@ -1,7 +1,7 @@
-/* .areamouse {
-  border: 1px solid blue;
-  width: 300px;
-  height: 400px;
+.areamouse {
+  /* border: 1px solid blue; */
+  width: 100%;
+  height: 100%;
 
   display: flex;
   flex-flow: column wrap;
@@ -11,74 +11,19 @@
 }
 
 .areamouse-title {
-  border: 1px solid blue;
+  /* border: 1px solid black; */
   color: slateblue;
+  font-size: 1rem;
 }
 
-.areamouse-button {
+.areamouse-buttons1 {
   border: none;
-  background-color: slateblue;
+  border-radius: 0.3rem;
+  background-color: green;
   color: white;
-} */
-
-/* .polygon-background {
-  border: 1px solid red;
-  background: black;
-  opacity: 0.5;
-  width: 100%;
-  height: 100vh;
-  z-index: 0;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  position: absolute;
-}
-.polygon-content {
-  border: 1px solid blue;
-  position: fixed;
-  background: white;
-  box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.5);
-  top: 50%;
-  left: 50%;
-  z-index: 10;
-  width: 90%;
-  min-width: 15rem;
-  max-width: 20rem;
-  height: 70%;
-  transform: translate(-50%, -50%);
-
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-  justify-content: space-around;
-}
-
-.polygon-title {
-  border: 1px solid salmon;
-  width: 100%;
-  padding: 0.5rem 1.5rem 0.5rem 1.5rem;
-  display: flex;
-  flex-flow: row;
-  align-items: center;
-  justify-content: space-between;
-  color: #238039;
-  font-size: 1.5rem;
-  font-weight: 600;
-}
-.polygon-buttons {
-  border: 1px solid salmon;
-
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-  gap: 10px;
-}
-.polygon-buttons1 {
-  border: 1px solid white;
-  background-color: blue;
-  border-radius: 5px;
-  color: white;
-  font-weight: 600;
   width: 10rem;
   height: 2rem;
-} */
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}

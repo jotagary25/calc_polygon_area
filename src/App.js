@@ -23,7 +23,9 @@ function App() {
       {/* {modalMouse && (
         <ModalMouse Content={AreaMouse} setModal={setModalMouse} />
       )} */}
-      {modalMouse && <AreaMouse setModal={setModalMouse} />}
+      {modalMouse && (
+        <ModalMouse Content={AreaMouse} setModal={setModalMouse} />
+      )}
     </div>
   );
 }
