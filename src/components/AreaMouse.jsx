@@ -155,12 +155,12 @@ const PolygonMap = ({ locations, setLocations }) => {
           mapTypeControl: false,
         }}
       >
-        <Marker
+        {/* <Marker
           onLoad={onLoadMarker}
           draggable
           position={locations.center}
           onDrag={(e) => updateMarker1(e)}
-        />
+        /> */}
         {/* <Marker
           onLoad={onLoadMarker}
           draggable
@@ -229,10 +229,6 @@ const AreaMouse = () => {
       setLocations({
         ...locations,
         center: defaultLocation,
-        // marker1: defaultLocation,
-        // marker2: defaultLocation,
-        // marker3: defaultLocation,
-        // marker4: defaultLocation,
       });
     });
   };
