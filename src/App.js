@@ -1,8 +1,9 @@
 import { useState } from "react";
 
 import "./App.css";
-import ModalMouse from "./components/Modal";
+import Modal from "./components/Modal";
 import AreaMouse from "./components/AreaMouse";
+import AreaGps from "./components/AreaGps";
 
 function App() {
   const [modalMouse, setModalMouse] = useState(false);
@@ -19,13 +20,11 @@ function App() {
       <button className="App-button" onClick={openModalMouse}>
         Calculate with mouse
       </button>
-      <button className="App-button">Calculate with GPS</button>
-      {/* {modalMouse && (
-        <ModalMouse Content={AreaMouse} setModal={setModalMouse} />
-      )} */}
-      {modalMouse && (
-        <ModalMouse Content={AreaMouse} setModal={setModalMouse} />
-      )}
+      <button className="App-button" onClick={openModalGps}>
+        Calculate with GPS
+      </button>
+      {modalMouse && <Modal Content={AreaMouse} setModal={setModalMouse} />}
+      {modalGps && <Modal Content={AreaGps} setModal={setModalGps} />}
     </div>
   );
 }
