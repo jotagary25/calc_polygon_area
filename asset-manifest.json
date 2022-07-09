@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/calc_polygon_area/static/css/main.a2acba34.css",
-    "main.js": "/calc_polygon_area/static/js/main.33430b6c.js",
+    "main.js": "/calc_polygon_area/static/js/main.75519f66.js",
     "static/js/787.e0384c53.chunk.js": "/calc_polygon_area/static/js/787.e0384c53.chunk.js",
     "index.html": "/calc_polygon_area/index.html",
     "main.a2acba34.css.map": "/calc_polygon_area/static/css/main.a2acba34.css.map",
-    "main.33430b6c.js.map": "/calc_polygon_area/static/js/main.33430b6c.js.map",
+    "main.75519f66.js.map": "/calc_polygon_area/static/js/main.75519f66.js.map",
     "787.e0384c53.chunk.js.map": "/calc_polygon_area/static/js/787.e0384c53.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a2acba34.css",
-    "static/js/main.33430b6c.js"
+    "static/js/main.75519f66.js"
   ]
 }
