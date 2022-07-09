@@ -1,5 +1,5 @@
 .modal-background {
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
   background: black;
   opacity: 0.5;
   width: 100%;
@@ -12,8 +12,12 @@
 }
 
 .modal-content {
-  border: 1px solid green;
+  /* border: 1px solid green; */
+  width: 90%;
+  min-width: 15rem;
+  max-width: 25rem;
   border-radius: 0.5rem;
+  /* margin: 0.5rem; */
   padding: 0.5rem;
   position: fixed;
   background: white;
@@ -21,8 +25,6 @@
   top: 50%;
   left: 50%;
   z-index: 10;
-  /* width: 300px;
-  height: 400px; */
   transform: translate(-50%, -50%);
 
   display: flex;

@@ -1,10 +1,10 @@
 import {
-  useJsApiLoader,
+  useLoadScript,
   GoogleMap,
   Marker,
   Polygon,
 } from "@react-google-maps/api";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Toaster, toast } from "react-hot-toast";
 
 import { KEY_GOOGLE_MAPS } from "../config/env";
@@ -15,14 +15,21 @@ const libraries = ["geometry"];
 
 const TitlePolygon = () => {
   return (
-    <div className="polygon-title">
+    <div className="areamouse-title">
       {/* <LocationIcon size="1.5rem" fillColor="#41AA54" borderColor="#258039" /> */}
-      <h2>Polygon</h2>
+      <h2>Polygon Area</h2>
     </div>
   );
 };
 
-const PolygonMap = ({ isLoaded, locations, setLocations }) => {
+const PolygonMap = ({ locations, setLocations }) => {
+  // Estado para Cargar el MAP
+  const { isLoaded } = useLoadScript({
+    googleMapsApiKey,
+    libraries,
+  });
+
+  // Funciones para Actualizar el MARKER
   const updateMarker1 = (e) => {
     setLocations({
       ...locations,
@@ -59,12 +66,8 @@ const PolygonMap = ({ isLoaded, locations, setLocations }) => {
       },
     });
   };
-  const pathsPolygon = [
-    locations.marker1,
-    locations.marker2,
-    locations.marker3,
-    locations.marker4,
-  ];
+
+  // Estado del componente POLYGON
   const optionsPolygon = {
     fillColor: "lightblue",
     fillOpacity: 0.5,
@@ -77,18 +80,22 @@ const PolygonMap = ({ isLoaded, locations, setLocations }) => {
     geodesic: false,
     zIndex: 1,
   };
-  const onLoad = (polygon) => {
+  const onLoadPolygon = (polygon) => {
     console.log("polygon: ", polygon);
   };
+  const pathsPolygon = [
+    locations.marker1,
+    locations.marker2,
+    locations.marker3,
+    locations.marker4,
+  ];
 
-  if (!isLoaded) {
-    return <p>Cargando mapa...</p>;
-  }
+  // Estado del componente MARKER
+  const onLoadMarker = (marker) => {
+    console.log("marker: ", marker);
+  };
 
-  console.log(pathsPolygon);
-  // eslint-disable-next-line no-undef
-  // let numberArea = google.maps.geometry.spherical.computeArea(pathsPolygon);
-  // console.log(numberArea);
+  //Función para calcular y mostart el AREA
   const showArea = () => {
     toast.success(
       // eslint-disable-next-line no-undef
@@ -96,6 +103,13 @@ const PolygonMap = ({ isLoaded, locations, setLocations }) => {
     );
   };
 
+  console.log(pathsPolygon);
+  console.log(locations);
+
+  // Componente MAP
+  if (!isLoaded) {
+    return <p>Cargando mapa...</p>;
+  }
   return (
     <>
       <GoogleMap
@@ -108,44 +122,44 @@ const PolygonMap = ({ isLoaded, locations, setLocations }) => {
         }}
       >
         <Marker
+          onLoad={onLoadMarker}
           draggable
           position={locations.marker1}
           onDrag={(e) => updateMarker1(e)}
         />
         <Marker
+          onLoad={onLoadMarker}
           draggable
           position={locations.marker2}
           onDrag={(e) => updateMarker2(e)}
         />
         <Marker
+          onLoad={onLoadMarker}
           draggable
           position={locations.marker3}
           onDrag={(e) => updateMarker3(e)}
         />
         <Marker
+          onLoad={onLoadMarker}
           draggable
           position={locations.marker4}
           onDrag={(e) => updateMarker4(e)}
         />
         <Polygon
-          onLoad={onLoad}
+          onLoad={onLoadPolygon}
           paths={pathsPolygon}
           options={optionsPolygon}
         />
       </GoogleMap>
-      <button className="polygon-buttons1" onClick={showArea}>
+      <button className="areamouse-buttons1" onClick={showArea}>
         mostrar area
       </button>
-      <Toaster />
+      <Toaster />3
     </>
   );
 };
 
-const AreaMouse = ({ setModal }) => {
-  const { isLoaded } = useJsApiLoader({
-    googleMapsApiKey,
-    libraries,
-  });
+const AreaMouse = () => {
   const [locations, setLocations] = useState({
     center: {
       lat: 4.631709,
@@ -168,7 +182,10 @@ const AreaMouse = ({ setModal }) => {
       lng: -74.10427,
     },
   });
-  const closeModal = () => setModal(false);
+
+  // useEffect(() => {
+  //   getWatchLocation();
+  // }, []);
   const getLocation = () => {
     navigator.geolocation.getCurrentPosition(function (position) {
       const defaultLocation = {
@@ -186,23 +203,28 @@ const AreaMouse = ({ setModal }) => {
     });
   };
 
-  return (
-    <>
-      <div className="polygon-background" onClick={closeModal}></div>
-      <div className="polygon-content">
-        <TitlePolygon />
-        <PolygonMap
-          isLoaded={isLoaded}
-          locations={locations}
-          setLocations={setLocations}
-        />
+  // const getWatchLocation = () => {
+  //   navigator.geolocation.watchPosition(function (position) {
+  //     const watchLocation = {
+  //       lat: position.coords.latitude,
+  //       lng: position.coords.longitude,
+  //     };
+  //     setLocations({
+  //       ...locations,
+  //       center: watchLocation,
+  //     });
+  //   });
+  // };
 
-        <div className="polygon-buttons1">
-          <button onClick={getLocation}>Localizar</button>
-          {/* <button>Mostrar Area</button> */}
-        </div>
-      </div>
-    </>
+  return (
+    <div className="areamouse">
+      <TitlePolygon />
+      <PolygonMap locations={locations} setLocations={setLocations} />
+
+      <button className="areamouse-buttons1" onClick={getLocation}>
+        Localizar
+      </button>
+    </div>
   );
 };
 
